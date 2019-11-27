@@ -1,0 +1,53 @@
+ion-content{
+
+  ion-grid{
+    padding: 0;
+    margin: 0;
+
+    .clientLogo{
+      width: 100%;
+
+      ion-img{
+        width: 25%;
+      }
+    }
+
+    .mainText{
+      width: 100%;
+
+      p{
+        padding: 0 20px 0 20px;
+        margin: 0;
+        font-size: 65px;
+      }
+
+    }
+
+    .showcase{
+      width: 100%;
+
+      .screen{
+        width: 15%;
+      }
+
+      .wifi{
+        width: 10%;
+      }
+
+    }
+
+    .companyLogo{
+      width: 100%;
+
+      img{
+        width: 30%;
+      }
+
+    }
+
+
+
+
+  }
+
+}
