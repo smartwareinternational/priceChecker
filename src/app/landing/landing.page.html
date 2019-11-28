@@ -2,50 +2,50 @@
 
   <ion-grid>
 
-    <ion-row justify-content-center>
+    <ion-row justify-content-center class="title">
       <ion-title text-center>LOGIN</ion-title>
     </ion-row>
 
-    <ion-row justify-content-center>
+    <ion-row justify-content-center class="form">
       <form [formGroup]="loginForm">
 
-        <ion-row justify-content-center>
+        <ion-row justify-content-center class="label">
           <ion-label>Server ip</ion-label>
         </ion-row>
-        <ion-row justify-content-center>
+        <ion-row justify-content-center class="input">
           <ion-input class="inputField" clearInput type="text" formControlName="ip" (focusout)="fillIp()"></ion-input>
         </ion-row>
 
-        <ion-row justify-content-center>
+        <ion-row justify-content-center class="label">
           <ion-label>Port</ion-label>
         </ion-row>
-        <ion-row justify-content-center>
+        <ion-row justify-content-center class="input">
           <ion-input class="inputField" clearInput type="number" formControlName="port" (focusout)="fillPort()"></ion-input>
         </ion-row>
 
-        <ion-row justify-content-center>
+        <ion-row justify-content-center class="label">
           <ion-label>Store Code</ion-label>
         </ion-row>
-        <ion-row justify-content-center>
-          <ion-input class="inputField" *ngIf="!isSelected" clearInput type="number" formControlName="store_id" (ionFocus)="checkIp()"></ion-input>
+        <ion-row justify-content-center class="input">
+          <ion-input class="inputField" *ngIf="!isSelected" clearInput type="number" formControlName="store_id" (ionFocus)="getStores()"></ion-input>
           <ion-input class="inputField" *ngIf="isSelected" (click)="getStores()">{{selectedStore.name}}</ion-input>
         </ion-row>
 
-        <ion-row justify-content-center>
+        <ion-row justify-content-center class="label">
           <ion-label>User Id</ion-label>
         </ion-row>
-        <ion-row justify-content-center>
+        <ion-row justify-content-center class="input">
           <ion-input class="inputField" clearInput type="number" formControlName="user_name"></ion-input>
         </ion-row>
 
-        <ion-row justify-content-center>
+        <ion-row justify-content-center class="label">
           <ion-label>User password</ion-label>
         </ion-row>
-        <ion-row justify-content-center>
+        <ion-row justify-content-center class="input">
           <ion-input class="inputField" clearInput type="password" formControlName="password"></ion-input>
         </ion-row>
 
-        <ion-row justify-content-center>
+        <ion-row justify-content-center class="submitBtn">
           <ion-button (click)="submit()">SUBMIT</ion-button>
         </ion-row>
 

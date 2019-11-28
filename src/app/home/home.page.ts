@@ -8,6 +8,8 @@ import {HandlerService} from '../services/handler.service';
 })
 export class HomePage {
 
-  constructor(public handler: HandlerService) {}
+  constructor(public handler: HandlerService) {
+    console.log(this.handler.serverLink + '/assistant/storeimagechecker.png');
+  }
 
 }
