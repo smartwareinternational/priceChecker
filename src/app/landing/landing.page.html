@@ -1,0 +1,61 @@
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row justify-content-center>
+      <ion-title text-center>LOGIN</ion-title>
+    </ion-row>
+
+    <ion-row justify-content-center>
+      <form [formGroup]="loginForm">
+
+        <ion-row justify-content-center>
+          <ion-label>Server ip</ion-label>
+        </ion-row>
+        <ion-row justify-content-center>
+          <ion-input class="inputField" clearInput type="text" formControlName="ip" (focusout)="fillIp()"></ion-input>
+        </ion-row>
+
+        <ion-row justify-content-center>
+          <ion-label>Port</ion-label>
+        </ion-row>
+        <ion-row justify-content-center>
+          <ion-input class="inputField" clearInput type="number" formControlName="port" (focusout)="fillPort()"></ion-input>
+        </ion-row>
+
+        <ion-row justify-content-center>
+          <ion-label>Store Code</ion-label>
+        </ion-row>
+        <ion-row justify-content-center>
+          <ion-input class="inputField" *ngIf="!isSelected" clearInput type="number" formControlName="store_id" (ionFocus)="checkIp()"></ion-input>
+          <ion-input class="inputField" *ngIf="isSelected" (click)="checkIp()">{{selectedStore.name}}</ion-input>
+        </ion-row>
+
+        <ion-row justify-content-center>
+          <ion-label>User Id</ion-label>
+        </ion-row>
+        <ion-row justify-content-center>
+          <ion-input class="inputField" clearInput type="number" formControlName="user_name"></ion-input>
+        </ion-row>
+
+        <ion-row justify-content-center>
+          <ion-label>User password</ion-label>
+        </ion-row>
+        <ion-row justify-content-center>
+          <ion-input class="inputField" clearInput type="password" formControlName="password"></ion-input>
+        </ion-row>
+
+        <ion-row justify-content-center>
+          <ion-button (click)="submit()">SUBMIT</ion-button>
+        </ion-row>
+
+      </form>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+
+<footer>
+  <ion-row justify-content-end><p text-end (click)="checkConnection()" *ngIf="handler.serverLink != undefined">Έλεγχος Σύνδεσης</p></ion-row>
+</footer>

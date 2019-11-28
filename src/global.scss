@@ -24,3 +24,13 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+
+.inputField{
+  height: 40px;
+  border-radius: 7px;
+  font-size: 14px;
+  padding: 0 50px 0 10px;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.12) inset;
+}
