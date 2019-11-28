@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {NativeStorage} from '@ionic-native/native-storage/ngx';
 import {HttpClient} from '@angular/common/http';
 import { Device } from '@ionic-native/device/ngx';
-import {Platform} from '@ionic/angular';
 
 const apikey = "5F18A40A-D21B-EEF0-3E92-8F5266AD0E50";
 
@@ -28,39 +27,35 @@ export class HandlerService {
 
   options = {};
 
-  userData: any;
   serverLink: string;
   validateData: any;
+  userData: any;
 
-  constructor(public natStorage: NativeStorage, public httpClient: HttpClient, public device: Device) {
-  }
+  constructor(public natStorage: NativeStorage, public httpClient: HttpClient, public device: Device) {}
+
+
+  // AUTOLOGIN --------------------------------------------------
 
   autoLogin() {
-    this.natStorage.getItem('userData')
-        .then(
-            data => {
-              console.log('successfully loaded data');
-              console.log(data);
-              this.userData = data;
-            },
-            error => console.error(error)
-        );
-  }
 
-  storeData(data) {
-    return new Promise(resolve => {
-      this.natStorage.setItem('userData', data)
-          .then(() => {
-            console.log("data stored");
-            resolve(true);
-          }, error => {
-            console.log("data not stored");
-            resolve(false);
-          });
+    return new Promise( resolve => {
+
+      this.natStorage.getItem('credentials')
+        .then(
+          data => {
+            console.log('successfully loaded data');
+            console.log(data);
+            resolve(data);
+          },
+          error => {console.error(error); resolve(null);}
+        );
+
     });
   }
+  // --------------------------------------------------
 
 
+  // GET STORES --------------------------------------------------
   getListStores(){
     let url = this.serverLink + this.url_liststores;
     console.log(url);
@@ -80,6 +75,10 @@ export class HandlerService {
 
     });
   }
+  // --------------------------------------------------
+
+
+  // TEST CONNECTION --------------------------------------------------
 
    isConnected(){
     let url = this.serverLink + this.url_liststores_hello;
@@ -98,7 +97,10 @@ export class HandlerService {
     });
 
   }
+  // --------------------------------------------------
 
+
+  // POS VALIDATE --------------------------------------------------
 
   validate(body){
 
@@ -135,6 +137,10 @@ export class HandlerService {
     });
 
   }
+  // --------------------------------------------------
+
+
+  // SAVE CREDENTIALS --------------------------------------------------
 
   saveCredentials(credentials){
     this.natStorage.setItem('credentials', credentials)
@@ -142,17 +148,30 @@ export class HandlerService {
           error => {console.log('Something went wrong. credentials could not be stored');}
       );
   }
+  // --------------------------------------------------
 
+
+  // LOGIN --------------------------------------------------
 
   login(body){
 
     let url = this.serverLink + this.url_poslogin;
 
+    let loginBody = {
+      store_id: body.store_id,
+      devicetoken: this.validateData.token,
+      user_name: body.user_name,
+      device: this.device.model,
+      platform: this.device.platform,
+      name: this.validateData.name,
+      fingerprint: this.device.uuid
+    };
+
     let temp: any;
 
     return new Promise( resolve => {
 
-      this.httpClient.post(url, body, this.options).subscribe( response => {
+      this.httpClient.post(url, loginBody, this.options).subscribe( response => {
 
         console.log(response);
         temp = response;
@@ -169,6 +188,7 @@ export class HandlerService {
     });
 
   }
+  // --------------------------------------------------
 
 
 }

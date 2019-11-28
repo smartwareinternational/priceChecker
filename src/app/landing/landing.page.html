@@ -28,7 +28,7 @@
         </ion-row>
         <ion-row justify-content-center>
           <ion-input class="inputField" *ngIf="!isSelected" clearInput type="number" formControlName="store_id" (ionFocus)="checkIp()"></ion-input>
-          <ion-input class="inputField" *ngIf="isSelected" (click)="checkIp()">{{selectedStore.name}}</ion-input>
+          <ion-input class="inputField" *ngIf="isSelected" (click)="getStores()">{{selectedStore.name}}</ion-input>
         </ion-row>
 
         <ion-row justify-content-center>

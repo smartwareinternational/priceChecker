@@ -19,6 +19,8 @@ export class LandingPage {
 
   constructor(public formBuild: FormBuilder, public pop: PopoverController, public device: Device, public navCtrl: NavController, public handler: HandlerService) {
 
+    this.init();
+
     this.loginForm = this.formBuild.group({
       ip: ['192.168.1.27', Validators.required],
       port: ['8400', Validators.required],
@@ -28,6 +30,32 @@ export class LandingPage {
     });
 
   }
+
+
+  // AUTOLOGIN --------------------------------------------------
+
+  init(){
+    let temp: any;
+    this.handler.autoLogin()
+      .then( resolve => {
+        if (resolve != null){
+          temp = resolve;
+          this.loginForm.value.ip = temp.ip;
+          this.loginForm.value.port = temp.port;
+          this.handler.serverLink = "http://" + this.loginForm.value.ip + ":" + this.loginForm.value.port;
+          this.loginForm.value.store_id = temp.store_id;
+          this.loginForm.value.user_name = temp.user_name;
+          this.loginForm.value.password = temp.password;
+
+          this.submit();
+
+        }
+      });
+  }
+  // --------------------------------------------------
+
+
+  // HANDLE IP AND PORT INPUT --------------------------------------------------
 
   fillIp(){
     if (this.handler.serverLink == undefined || this.loginForm.value.port == ''){
@@ -43,7 +71,12 @@ export class LandingPage {
     }
   }
 
-  checkIp(){
+  // --------------------------------------------------
+
+
+  // GET STORE LIST --------------------------------------------------
+
+  getStores(){
 
     if (this.loginForm.value.ip != '' && this.loginForm.value.port != ''){
       this.handler.serverLink = "http://" + this.loginForm.value.ip + ":" + this.loginForm.value.port;
@@ -55,6 +88,10 @@ export class LandingPage {
         });
     }
   }
+  // --------------------------------------------------
+
+
+  // STORE SELECTION POPOVER --------------------------------------------------
 
   async presentStoreList(list){
     const storeSelection = await this.pop.create({
@@ -75,6 +112,10 @@ export class LandingPage {
 
     return await storeSelection.present();
   }
+  // --------------------------------------------------
+
+
+  // TEST CONNECTION --------------------------------------------------
 
   checkConnection(){
     this.handler.isConnected()
@@ -86,6 +127,10 @@ export class LandingPage {
         }
       });
   }
+  // --------------------------------------------------
+
+
+  // SUBMIT FORM --------------------------------------------------
 
   submit(){
     let body = {
@@ -99,35 +144,25 @@ export class LandingPage {
     this.handler.validate(body)
       .then( resolve => {
         if (resolve){
-          let save = {
-            user_name: body.user_name,
-            pwd: body.pwd
-          };
-          this.handler.saveCredentials(save);
+          this.handler.saveCredentials(this.loginForm.value);
           this.grabLogin(body);
         }
       });
   }
+  // --------------------------------------------------
+
+
+  // LOGIN --------------------------------------------------
 
   grabLogin(body){
 
-    let loginBody = {
-      store_id: body.store_id,
-      devicetoken: this.handler.validateData.token,
-      user_name: body.user_name,
-      device: this.device.model,
-      platform: this.device.platform,
-      name: this.handler.validateData.name,
-      fingerprint: this.device.uuid
-    };
-
-    console.log(loginBody);
-    this.handler.login(loginBody)
+    this.handler.login(body)
       .then( resolve => {
         if (resolve){
           this.navCtrl.navigateForward('home');
         }
       });
   }
+  // --------------------------------------------------
 
 }
