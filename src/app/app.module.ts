@@ -12,6 +12,7 @@ import {NativeStorage} from '@ionic-native/native-storage/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import {ComponentsModule} from './components/components.module';
 import {StoreSelectionComponent} from './components/store-selection/store-selection.component';
+import {Device} from '@ionic-native/device/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import {StoreSelectionComponent} from './components/store-selection/store-select
     StatusBar,
     SplashScreen,
     NativeStorage,
+    Device,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HandlerService} from '../services/handler.service';
-import {PopoverController} from '@ionic/angular';
+import {NavController, PopoverController} from '@ionic/angular';
 import {StoreSelectionComponent} from '../components/store-selection/store-selection.component';
+import {Device} from '@ionic-native/device/ngx';
 
 @Component({
   selector: 'app-landing',
@@ -16,7 +17,7 @@ export class LandingPage {
   isSelected = false;
   selectedStore: any;
 
-  constructor(public formBuild: FormBuilder, public pop: PopoverController, public handler: HandlerService) {
+  constructor(public formBuild: FormBuilder, public pop: PopoverController, public device: Device, public navCtrl: NavController, public handler: HandlerService) {
 
     this.loginForm = this.formBuild.group({
       ip: ['192.168.1.27', Validators.required],
@@ -98,13 +99,35 @@ export class LandingPage {
     this.handler.validate(body)
       .then( resolve => {
         if (resolve){
-          this.grabLogin();
+          let save = {
+            user_name: body.user_name,
+            pwd: body.pwd
+          };
+          this.handler.saveCredentials(save);
+          this.grabLogin(body);
         }
       });
   }
 
-  grabLogin(){
-    
+  grabLogin(body){
+
+    let loginBody = {
+      store_id: body.store_id,
+      devicetoken: this.handler.validateData.token,
+      user_name: body.user_name,
+      device: this.device.model,
+      platform: this.device.platform,
+      name: this.handler.validateData.name,
+      fingerprint: this.device.uuid
+    };
+
+    console.log(loginBody);
+    this.handler.login(loginBody)
+      .then( resolve => {
+        if (resolve){
+          this.navCtrl.navigateForward('home');
+        }
+      });
   }
 
 }

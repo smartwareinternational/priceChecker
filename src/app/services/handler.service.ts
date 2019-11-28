@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {NativeStorage} from '@ionic-native/native-storage/ngx';
 import {HttpClient} from '@angular/common/http';
+import { Device } from '@ionic-native/device/ngx';
+import {Platform} from '@ionic/angular';
 
 const apikey = "5F18A40A-D21B-EEF0-3E92-8F5266AD0E50";
 
@@ -21,14 +23,16 @@ export class HandlerService {
   url_liststores = "/api/v1/liststores/index";
   url_liststores_hello = "/api/v1/liststores/hello";
   url_posvalidate = "/api/v1/users/validate";
+  url_poslogin = "/api/v1/pos/login";
   // ============================== URLS ============================== //
 
   options = {};
 
   userData: any;
   serverLink: string;
+  validateData: any;
 
-  constructor(public natStorage: NativeStorage, public httpClient: HttpClient) {
+  constructor(public natStorage: NativeStorage, public httpClient: HttpClient, public device: Device) {
   }
 
   autoLogin() {
@@ -109,12 +113,14 @@ export class HandlerService {
         console.log(response);
         temp = response;
         temp = temp.result[0].data[0];
+        this.validateData = temp;
 
         this.options = {
           headers: ({
             "Accept": "application/json",
             "ApiKey": apikey,
-            "Authorization": temp.token, //TODO: Fingerprnt
+            "Authorization": 'Bearer ' + temp.token,
+            "FingerPrint": this.device.uuid,
             "TraceLog": "1"
           })
         };
@@ -123,7 +129,41 @@ export class HandlerService {
 
       }, error => {
         console.log(error);
-        resolve(null);
+        resolve(false);
+      });
+
+    });
+
+  }
+
+  saveCredentials(credentials){
+    this.natStorage.setItem('credentials', credentials)
+      .then( () => {console.log('credentials stored');},
+          error => {console.log('Something went wrong. credentials could not be stored');}
+      );
+  }
+
+
+  login(body){
+
+    let url = this.serverLink + this.url_poslogin;
+
+    let temp: any;
+
+    return new Promise( resolve => {
+
+      this.httpClient.post(url, body, this.options).subscribe( response => {
+
+        console.log(response);
+        temp = response;
+        temp = temp.result[0].data[0];
+
+        this.userData = temp;
+        resolve(true);
+
+      }, error => {
+        console.log(error);
+        resolve(false);
       });
 
     });
