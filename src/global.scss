@@ -26,6 +26,30 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
+.modalBig .modal-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+}
+
+.clientLogo{
+  width: 100%;
+
+  ion-img{
+    width: 25%;
+  }
+}
+
+.companyLogo{
+  width: 100%;
+
+  img{
+    width: 30%;
+  }
+
+}
+
 
 .inputField{
   height: 40px;

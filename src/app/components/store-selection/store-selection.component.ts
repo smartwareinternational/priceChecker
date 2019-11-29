@@ -10,38 +10,6 @@ export class StoreSelectionComponent implements OnInit {
 
   stores = [];
 
-  // stores = [
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  //   {active_ind: "1", name: "ΥΠΟΚΑΤΑΣΤΗΜΑ 3  ΓΛΥΦΑΔΑΣ", store_id: "1101"},
-  // ];
-
   constructor(public navParams: NavParams, public pop: PopoverController) {
     this.getData();
   }

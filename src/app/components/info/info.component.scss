@@ -1,0 +1,74 @@
+.iteminfo{
+
+  ion-row{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .descr{
+    font-size: 65px;
+    margin: 0 auto 3px auto;
+  }
+
+  .bc_vat{
+    font-size: 20px;
+    margin: 0 auto 2px auto;
+  }
+
+  .vatRow{
+    margin-bottom: 150px !important;
+  }
+
+  .prices{
+    font-size: 35px;
+    margin: 0;
+  }
+
+  .finalPriceCol{
+    padding: 0;
+    margin: 0;
+  }
+
+  .finalPrice{
+    font-size: 65px;
+    font-weight: 800;
+    margin: 0;
+  }
+
+}
+
+.loyaltycard{
+
+  ion-row{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  p{
+    margin: 10px auto 100px auto;
+  }
+
+  .name{
+    font-size: 65px;
+  }
+
+  .card{
+    font-size: 20px;
+  }
+
+  .points{
+    font-size: 35px;
+  }
+
+}
+
+.iteminfoFooter{
+  .mmaInfo{
+    p{
+      font-size: 20px;
+      margin: 0 0 5px 0;
+    }
+  }
+}

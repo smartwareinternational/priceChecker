@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {NativeStorage} from '@ionic-native/native-storage/ngx';
 import {HttpClient} from '@angular/common/http';
 import { Device } from '@ionic-native/device/ngx';
+import {AlertController} from '@ionic/angular';
 
 const apikey = "5F18A40A-D21B-EEF0-3E92-8F5266AD0E50";
 
@@ -23,6 +24,7 @@ export class HandlerService {
   url_liststores_hello = "/api/v1/liststores/hello";
   url_posvalidate = "/api/v1/users/validate";
   url_poslogin = "/api/v1/pos/login";
+  url_pricechecker = "/api/v1/status/pricechecker?barcode=";
   // ============================== URLS ============================== //
 
   options = {};
@@ -31,7 +33,12 @@ export class HandlerService {
   validateData: any;
   userData: any;
 
-  constructor(public natStorage: NativeStorage, public httpClient: HttpClient, public device: Device) {}
+  keystrokes = [];
+  currentItem: any;
+  timeoutReset = false;
+  timout = 10000;
+
+  constructor(public natStorage: NativeStorage, public httpClient: HttpClient, public device: Device, public alertCtrl: AlertController) {}
 
 
   // AUTOLOGIN --------------------------------------------------
@@ -122,7 +129,7 @@ export class HandlerService {
             "Accept": "application/json",
             "ApiKey": apikey,
             "Authorization": 'Bearer ' + temp.token,
-            "FingerPrint": this.device.uuid,
+            // "FingerPrint": this.device.uuid,
             "TraceLog": "1"
           })
         };
@@ -164,7 +171,7 @@ export class HandlerService {
       device: this.device.model,
       platform: this.device.platform,
       name: this.validateData.name,
-      fingerprint: this.device.uuid
+      // fingerprint: this.device.uuid
     };
 
     let temp: any;
@@ -189,6 +196,66 @@ export class HandlerService {
 
   }
   // --------------------------------------------------
+
+  getKeystrokes(event){
+    if (event.key == 'Enter'){
+      return 1;
+    }else{
+      if (this.keystrokes == undefined){
+        this.keystrokes = [];
+        this.keystrokes.push(event.key);
+      }else{
+        console.log(event.key);
+        this.keystrokes.push(event.key);
+      }
+      return 0;
+    }
+  }
+
+  scan(){
+    let barcode = '';
+
+    for (let key of this.keystrokes){
+      console.log(key);
+      barcode += key;
+    }
+    console.log(barcode);
+    // barcode = "5000112528381"; //HARDCODE ITEM
+    // barcode = "9980010155802"; // HARDCODE CARD
+    this.keystrokes = [];
+
+    let url = this.serverLink + this.url_pricechecker + barcode;
+    console.log(url);
+    let temp: any;
+
+    return new Promise( resolve => {
+
+      this.httpClient.get(url, this.options).subscribe( response => {
+        console.log(response);
+        temp = response;
+        temp = temp.result[0].data;
+        this.currentItem = undefined;
+        this.currentItem = temp;
+
+        resolve(true);
+      }, error => {
+        console.log(error);
+        resolve(false);
+      });
+
+    });
+
+  }
+
+  async noDataAlert(){
+    const alert = await this.alertCtrl.create({
+      message: "ΔΕΝ ΒΡΕΘΗΚΑΝ ΣΤΟΙΧΕΙΑ"
+    });
+
+    setTimeout( () => this.alertCtrl.dismiss(), 3000);
+
+    return await alert.present();
+  }
 
 
 }

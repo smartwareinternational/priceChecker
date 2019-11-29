@@ -19,14 +19,14 @@ export class LandingPage {
 
   constructor(public formBuild: FormBuilder, public pop: PopoverController, public device: Device, public navCtrl: NavController, public handler: HandlerService) {
 
-    this.init();
+    this.getSavedCredentials();
 
     this.loginForm = this.formBuild.group({
       ip: ['192.168.1.27', Validators.required],
       port: ['8400', Validators.required],
       store_id: ['', Validators.required],
-      user_name: ['55', Validators.required],
-      password: ['[810C679D]', Validators.required]
+      user_name: ['66', Validators.required],
+      password: ['6666', Validators.required]
     });
 
   }
@@ -34,7 +34,7 @@ export class LandingPage {
 
   // AUTOLOGIN --------------------------------------------------
 
-  init(){
+  getSavedCredentials(){
     let temp: any;
     this.handler.autoLogin()
       .then( resolve => {
@@ -155,7 +155,6 @@ export class LandingPage {
   // LOGIN --------------------------------------------------
 
   grabLogin(body){
-
     this.handler.login(body)
       .then( resolve => {
         if (resolve){

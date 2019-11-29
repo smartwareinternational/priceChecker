@@ -13,10 +13,11 @@ import { HttpClientModule } from '@angular/common/http';
 import {ComponentsModule} from './components/components.module';
 import {StoreSelectionComponent} from './components/store-selection/store-selection.component';
 import {Device} from '@ionic-native/device/ngx';
+import {InfoComponent} from './components/info/info.component';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [StoreSelectionComponent],
+  entryComponents: [StoreSelectionComponent, InfoComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

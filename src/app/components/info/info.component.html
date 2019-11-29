@@ -1,0 +1,106 @@
+<ion-content>
+
+<!--  CLIENT LOGO-->
+  <ion-grid class="top">
+    <ion-row class="clientLogo">
+<!--      <ion-img [src]="'http://192.168.1.27/assistant/storeimagechecker.png'"></ion-img> &lt;!&ndash;HARDCODE&ndash;&gt;-->
+            <ion-img [src]="imgIp + '/assistant/storeimagechecker.png'"></ion-img>
+    </ion-row>
+  </ion-grid>
+
+<!--  ITEMINFO GRID-->
+  <ion-grid class="iteminfo" *ngIf="handler.currentItem.iteminfo.length != 0">
+
+    <ion-row justify-content-center>
+      <p class="descr" text-center>{{handler.currentItem.iteminfo.descr}}</p>
+    </ion-row>
+
+    <ion-row justify-content-center>
+      <p class="bc_vat" text-center>({{handler.currentItem.iteminfo.barcode}} / {{handler.currentItem.iteminfo.tax_id}})</p>
+    </ion-row>
+
+    <ion-row class="vatRow" justify-content-center>
+      <p class="bc_vat" text-center>ΦΠΑ {{handler.currentItem.iteminfo.vat_perc}}%</p>
+    </ion-row>
+
+    <ion-row align-items-center>
+
+      <ion-col text-start size="4">
+        <p class="prices" *ngIf="handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">Τιμή Από: {{handler.currentItem.iteminfo.price}}€</p>
+      </ion-col>
+
+      <ion-col text-start size="4">
+        <p class="prices" *ngIf="handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">Όφελος: {{handler.currentItem.iteminfo.final_price - handler.currentItem.iteminfo.price}}€</p>
+      </ion-col>
+
+      <ion-col class="finalPriceCol" text-end size="1">
+        <p class="prices">Τιμή:</p>
+      </ion-col>
+
+      <ion-col class="finalPriceCol" text-start size="3">
+        <p class="finalPrice">{{handler.currentItem.iteminfo.final_price}}€</p>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+<!--  LOYALTY CARD GRID-->
+  <ion-grid class="loyaltycard" *ngIf="handler.currentItem.loyaltycard.length != 0">
+
+    <ion-row justify-content-center>
+      <p class="name" text-center>{{handler.currentItem.loyaltycard.name}}</p>
+    </ion-row>
+
+    <ion-row justify-content-center>
+      <p class="card" text-center>Κάρτα: {{handler.currentItem.loyaltycard.barcode}}</p>
+    </ion-row>
+
+    <ion-row justify-content-center>
+      <p class="points" text-center>Πόντοι: {{handler.currentItem.loyaltycard.cum_pts}}</p>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+
+<footer>
+
+<!--  ITEM INFO FOOTER-->
+  <ion-grid class="iteminfoFooter" *ngIf="handler.currentItem.iteminfo.length != 0">
+    <ion-row justify-content-end class="companyLogo">
+
+      <ion-col class="mmaInfo" text-start align-items-start size="4">
+        <p *ngIf="handler.currentItem.iteminfo.mma_descr != '' && handler.currentItem.iteminfo.final_price == handler.currentItem.iteminfo.price">
+          {{handler.currentItem.iteminfo.mma_descr}} {{handler.currentItem.iteminfo.mma_to}}€
+        </p>
+        <p *ngIf="handler.currentItem.iteminfo.mma_descr != '' && handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">
+          {{handler.currentItem.iteminfo.mma_descr}} Από: {{handler.currentItem.iteminfo.mma_from}}€
+        </p>
+      </ion-col>
+
+      <ion-col class="mmaInfo" text-start align-items-start size="4">
+        <p *ngIf="handler.currentItem.iteminfo.mma_descr != '' && handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">
+          Σε: {{handler.currentItem.iteminfo.mma_to}}€
+        </p>
+      </ion-col>
+
+      <ion-col text-end align-items-end size="4">
+        <img src="assets/img/logo-smartware.png">
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+<!--  LOYALTY CARD FOOTER-->
+  <ion-grid *ngIf="handler.currentItem.loyaltycard.length != 0">
+    <ion-row justify-content-end class="companyLogo">
+
+      <ion-col text-end align-items-end size="4">
+        <img src="assets/img/logo-smartware.png">
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</footer>

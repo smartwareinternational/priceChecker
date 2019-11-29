@@ -3,7 +3,8 @@
   <ion-grid>
 
     <ion-row class="clientLogo">
-      <ion-img [src]="this.handler.serverLink + '/assistant/storeimagechecker.png'"></ion-img>
+<!--      <ion-img [src]="'http://192.168.1.27/assistant/storeimagechecker.png'"></ion-img> &lt;!&ndash;HARDCODE&ndash;&gt;-->
+      <ion-img [src]="imgIp + '/assistant/storeimagechecker.png'"></ion-img>
     </ion-row>
 
     <ion-row justify-content-center class="mainText">
@@ -18,6 +19,13 @@
       <ion-img class="wifi" src="assets/img/red wifi.jpg" style="transform: rotate(180deg)"></ion-img>
     </ion-row>
 
+  </ion-grid>
+
+</ion-content>
+
+<footer>
+
+  <ion-grid>
     <ion-row justify-content-end class="companyLogo">
 
       <ion-col text-center align-items-start size="4">
@@ -29,7 +37,6 @@
       </ion-col>
 
     </ion-row>
-
   </ion-grid>
 
-</ion-content>
+</footer>
