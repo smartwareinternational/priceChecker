@@ -57,5 +57,12 @@
 </ion-content>
 
 <footer>
-  <ion-row justify-content-end><p text-end (click)="checkConnection()" *ngIf="handler.serverLink != undefined">Έλεγχος Σύνδεσης</p></ion-row>
+  <ion-row>
+    <ion-col text-start>
+      <p (click)="goScanQR()">ή συνδεθείτε με QR</p>
+    </ion-col>
+    <ion-col>
+      <p text-end (click)="checkConnection()" *ngIf="handler.serverLink != undefined">Έλεγχος Σύνδεσης</p>
+    </ion-col>
+  </ion-row>
 </footer>

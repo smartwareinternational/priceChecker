@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HandlerService} from '../services/handler.service';
-import {NavController, PopoverController} from '@ionic/angular';
+import {ModalController, NavController, PopoverController} from '@ionic/angular';
 import {StoreSelectionComponent} from '../components/store-selection/store-selection.component';
 import {Device} from '@ionic-native/device/ngx';
+import {ScanQRComponent} from '../components/scan-qr/scan-qr.component';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.page.html',
-  styleUrls: ['./landing.page.scss'],
+  styleUrls: ['./landing.page.scss']
 })
 export class LandingPage {
 
@@ -17,16 +18,16 @@ export class LandingPage {
   isSelected = false;
   selectedStore: any;
 
-  constructor(public formBuild: FormBuilder, public pop: PopoverController, public device: Device, public navCtrl: NavController, public handler: HandlerService) {
+  constructor(public formBuild: FormBuilder, public pop: PopoverController, public device: Device, public navCtrl: NavController, public modCtrl: ModalController, public handler: HandlerService) {
 
     this.getSavedCredentials();
 
     this.loginForm = this.formBuild.group({
-      ip: ['192.168.1.27', Validators.required],
-      port: ['8400', Validators.required],
+      ip: ['', Validators.required],
+      port: ['', Validators.required],
       store_id: ['', Validators.required],
-      user_name: ['66', Validators.required],
-      password: ['6666', Validators.required]
+      user_name: ['', Validators.required],
+      password: ['', Validators.required]
     });
 
   }
@@ -40,12 +41,22 @@ export class LandingPage {
       .then( resolve => {
         if (resolve != null){
           temp = resolve;
-          this.loginForm.value.ip = temp.ip;
-          this.loginForm.value.port = temp.port;
+          // this.loginForm.value.ip = temp.ip;
+          // this.loginForm.value.port = temp.port;
+          // this.handler.serverLink = "http://" + this.loginForm.value.ip + ":" + this.loginForm.value.port;
+          // this.loginForm.value.store_id = temp.store_id;
+          // this.loginForm.value.user_name = temp.user_name;
+          // this.loginForm.value.password = temp.password;
+
+
+          this.loginForm = this.formBuild.group({
+            ip: [temp.ip, Validators.required],
+            port: [temp.port, Validators.required],
+            store_id: [temp.store_id, Validators.required],
+            user_name: [temp.user_name, Validators.required],
+            password: [temp.password, Validators.required]
+          });
           this.handler.serverLink = "http://" + this.loginForm.value.ip + ":" + this.loginForm.value.port;
-          this.loginForm.value.store_id = temp.store_id;
-          this.loginForm.value.user_name = temp.user_name;
-          this.loginForm.value.password = temp.password;
 
           this.submit();
 
@@ -122,8 +133,10 @@ export class LandingPage {
       .then( resolve => {
         if (resolve){
           console.log("Server is online");
+          this.handler.connectionAlert(0);
         }else{
           console.log("Server is not connected");
+          this.handler.connectionAlert(1);
         }
       });
   }
@@ -163,5 +176,38 @@ export class LandingPage {
       });
   }
   // --------------------------------------------------
+
+
+  // QR SCAN --------------------------------------------------
+
+  async goScanQR(){
+    const scan = await this.modCtrl.create({
+      component: ScanQRComponent,
+      cssClass: "modalSmall",
+      mode: 'ios'
+    });
+
+    scan.onDidDismiss()
+      .then(data => {
+        console.log(data);
+
+        if(data.data != undefined){
+          this.loginForm = this.formBuild.group({
+            ip: [data.data[0], Validators.required],
+            port: [data.data[1], Validators.required],
+            store_id: [data.data[2], Validators.required],
+            user_name: [data.data[3], Validators.required],
+            password: [data.data[4], Validators.required]
+          });
+
+          this.submit();
+        }
+      });
+
+    return await scan.present();
+  }
+  // --------------------------------------------------
+
+
 
 }

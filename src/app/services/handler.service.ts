@@ -77,6 +77,7 @@ export class HandlerService {
         resolve(temp.result[0].data);
       }, error => {
         console.log(error);
+        this.errorAlert();
         resolve(null);
       });
 
@@ -98,6 +99,7 @@ export class HandlerService {
         resolve(true);
       }, error => {
         console.log(error);
+        this.errorAlert();
         resolve(false);
       });
 
@@ -138,6 +140,7 @@ export class HandlerService {
 
       }, error => {
         console.log(error);
+        this.errorAlert();
         resolve(false);
       });
 
@@ -189,6 +192,7 @@ export class HandlerService {
 
       }, error => {
         console.log(error);
+        this.errorAlert();
         resolve(false);
       });
 
@@ -205,7 +209,6 @@ export class HandlerService {
         this.keystrokes = [];
         this.keystrokes.push(event.key);
       }else{
-        console.log(event.key);
         this.keystrokes.push(event.key);
       }
       return 0;
@@ -216,7 +219,6 @@ export class HandlerService {
     let barcode = '';
 
     for (let key of this.keystrokes){
-      console.log(key);
       barcode += key;
     }
     console.log(barcode);
@@ -240,6 +242,7 @@ export class HandlerService {
         resolve(true);
       }, error => {
         console.log(error);
+        this.errorAlert();
         resolve(false);
       });
 
@@ -250,6 +253,33 @@ export class HandlerService {
   async noDataAlert(){
     const alert = await this.alertCtrl.create({
       message: "ΔΕΝ ΒΡΕΘΗΚΑΝ ΣΤΟΙΧΕΙΑ"
+    });
+
+    setTimeout( () => this.alertCtrl.dismiss(), 3000);
+
+    return await alert.present();
+  }
+
+  async connectionAlert(type){
+    let message = '';
+    if (type == 0){
+      message = "Server is online";
+    }else {
+      message = "Server is offline";
+    }
+
+    const alert = await this.alertCtrl.create({
+      message: message
+    });
+
+    setTimeout( () => this.alertCtrl.dismiss(), 2000);
+
+    return await alert.present();
+  }
+
+  async errorAlert(){
+    const alert = await this.alertCtrl.create({
+      message: "ΠΑΡΟΥΣΙΑΣΤΗΚΕ ΠΡΟΒΛΗΜΑ"
     });
 
     setTimeout( () => this.alertCtrl.dismiss(), 3000);

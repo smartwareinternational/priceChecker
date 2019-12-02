@@ -14,10 +14,11 @@ import {ComponentsModule} from './components/components.module';
 import {StoreSelectionComponent} from './components/store-selection/store-selection.component';
 import {Device} from '@ionic-native/device/ngx';
 import {InfoComponent} from './components/info/info.component';
+import {ScanQRComponent} from './components/scan-qr/scan-qr.component';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [StoreSelectionComponent, InfoComponent],
+  entryComponents: [StoreSelectionComponent, InfoComponent, ScanQRComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
