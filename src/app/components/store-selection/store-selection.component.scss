@@ -10,8 +10,16 @@ ion-list{
     background: #DBD6D6;
     border-radius: 10px;
 
-    p{
+    ion-text{
       padding: 0;
+      margin: 0;
+      color: black;
+
+      p{
+        padding: 0;
+        margin: 0 0 2px 0;
+
+      }
     }
   }
 

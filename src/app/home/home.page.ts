@@ -12,14 +12,19 @@ import {InfoComponent} from '../components/info/info.component';
 export class HomePage {
 
   imgIp: string;
+  imgName: string;
   isModalOpen = false;
 
-  constructor(public modCtrl: ModalController, public handler: HandlerService) {
+  constructor(public modCtrl: ModalController,public handler: HandlerService) {
+
+    this.imgName = '';
+    this.imgName = "/assistant/storeimagechecker.png";
 
     this.getIp();
   }
 
   handleKeyboardEvent(event){
+
     let temp = this.handler.getKeystrokes(event);
 
     if (temp == 1){
@@ -33,9 +38,10 @@ export class HomePage {
             }else{
               if (!this.isModalOpen){
                 this.isModalOpen = true;
-                this.handler.timeoutReset = true;
+                this.handler.closeOnTimer();
                 this.showInfo();
               }else{
+                this.handler.clearTime();
               }
             }
           }

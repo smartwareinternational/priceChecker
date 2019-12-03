@@ -9,12 +9,16 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {NativeStorage} from '@ionic-native/native-storage/ngx';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {ComponentsModule} from './components/components.module';
 import {StoreSelectionComponent} from './components/store-selection/store-selection.component';
 import {Device} from '@ionic-native/device/ngx';
 import {InfoComponent} from './components/info/info.component';
 import {ScanQRComponent} from './components/scan-qr/scan-qr.component';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
+
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,17 +26,29 @@ import {ScanQRComponent} from './components/scan-qr/scan-qr.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     ComponentsModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({hardwareBackButton: false}),
     AppRoutingModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
     NativeStorage,
+    Keyboard,
     Device,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+
+export function createTranslateLoader(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
+}

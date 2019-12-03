@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import {NativeStorage} from '@ionic-native/native-storage/ngx';
 import {HttpClient} from '@angular/common/http';
 import { Device } from '@ionic-native/device/ngx';
-import {AlertController} from '@ionic/angular';
+import {AlertController, ModalController} from '@ionic/angular';
+import {FormGroup} from '@angular/forms';
+import {TranslateService} from '@ngx-translate/core';
 
 const apikey = "5F18A40A-D21B-EEF0-3E92-8F5266AD0E50";
 
@@ -10,7 +12,7 @@ const httpOptions = {
   headers: ({
     "Accept": "application/json",
     "ApiKey": apikey,
-    "TraceLog": "1"
+    "TraceLog": "0"
   })
 };
 
@@ -35,10 +37,15 @@ export class HandlerService {
 
   keystrokes = [];
   currentItem: any;
-  timeoutReset = false;
-  timout = 10000;
 
-  constructor(public natStorage: NativeStorage, public httpClient: HttpClient, public device: Device, public alertCtrl: AlertController) {}
+  timeout: any;
+
+  loginFormSetUp: FormGroup;
+
+  constructor(public natStorage: NativeStorage, public httpClient: HttpClient, public device: Device, public alertCtrl: AlertController, public translate: TranslateService, public modCtrl: ModalController) {
+    this.translate.setDefaultLang('el');
+    console.log("Language is " + this.translate.currentLang);
+  }
 
 
   // AUTOLOGIN --------------------------------------------------
@@ -132,7 +139,7 @@ export class HandlerService {
             "ApiKey": apikey,
             "Authorization": 'Bearer ' + temp.token,
             // "FingerPrint": this.device.uuid,
-            "TraceLog": "1"
+            "TraceLog": "0"
           })
         };
 
@@ -285,6 +292,17 @@ export class HandlerService {
     setTimeout( () => this.alertCtrl.dismiss(), 3000);
 
     return await alert.present();
+  }
+
+  clearTime(){
+    this.timeout.clearTimeout();
+    this.closeOnTimer();
+  }
+
+  closeOnTimer(){
+    this.timeout = setTimeout( () => {
+      this.modCtrl.dismiss();
+    }, 10000);
   }
 
 

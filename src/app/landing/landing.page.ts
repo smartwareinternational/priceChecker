@@ -20,8 +20,6 @@ export class LandingPage {
 
   constructor(public formBuild: FormBuilder, public pop: PopoverController, public device: Device, public navCtrl: NavController, public modCtrl: ModalController, public handler: HandlerService) {
 
-    this.getSavedCredentials();
-
     this.loginForm = this.formBuild.group({
       ip: ['', Validators.required],
       port: ['', Validators.required],
@@ -30,38 +28,17 @@ export class LandingPage {
       password: ['', Validators.required]
     });
 
+    this.getSavedCredentials();
+
   }
 
 
   // AUTOLOGIN --------------------------------------------------
 
   getSavedCredentials(){
-    let temp: any;
-    this.handler.autoLogin()
-      .then( resolve => {
-        if (resolve != null){
-          temp = resolve;
-          // this.loginForm.value.ip = temp.ip;
-          // this.loginForm.value.port = temp.port;
-          // this.handler.serverLink = "http://" + this.loginForm.value.ip + ":" + this.loginForm.value.port;
-          // this.loginForm.value.store_id = temp.store_id;
-          // this.loginForm.value.user_name = temp.user_name;
-          // this.loginForm.value.password = temp.password;
-
-
-          this.loginForm = this.formBuild.group({
-            ip: [temp.ip, Validators.required],
-            port: [temp.port, Validators.required],
-            store_id: [temp.store_id, Validators.required],
-            user_name: [temp.user_name, Validators.required],
-            password: [temp.password, Validators.required]
-          });
-          this.handler.serverLink = "http://" + this.loginForm.value.ip + ":" + this.loginForm.value.port;
-
-          this.submit();
-
-        }
-      });
+    if (this.handler.loginFormSetUp != undefined){
+      this.loginForm = this.handler.loginFormSetUp;
+    }
   }
   // --------------------------------------------------
 
@@ -118,6 +95,7 @@ export class LandingPage {
           this.loginForm.value.store_id = data.data.store_id;
           this.isSelected = true;
           this.selectedStore = data.data;
+          console.log(this.loginForm.value);
         }
       });
 
@@ -146,8 +124,16 @@ export class LandingPage {
   // SUBMIT FORM --------------------------------------------------
 
   submit(){
+    let store_id = '';
+    if (this.isSelected){
+      store_id = this.selectedStore.store_id;
+      console.log(store_id);
+    }else{
+      store_id = this.loginForm.value.store_id;
+      console.log(store_id);
+    }
     let body = {
-      "store_id": this.loginForm.value.store_id,
+      "store_id": store_id,
       "user_name": this.loginForm.value.user_name,
       "pwd": this.loginForm.value.password
     };

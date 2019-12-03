@@ -6,13 +6,15 @@ import {FormsModule} from '@angular/forms';
 import {StoreSelectionComponent} from './store-selection/store-selection.component';
 import {InfoComponent} from './info/info.component';
 import {ScanQRComponent} from './scan-qr/scan-qr.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   declarations: [StoreSelectionComponent, InfoComponent, ScanQRComponent],
   imports: [
     CommonModule,
     IonicModule,
-    FormsModule
+    FormsModule,
+    TranslateModule,
   ],
   exports: [StoreSelectionComponent, InfoComponent, ScanQRComponent]
 })

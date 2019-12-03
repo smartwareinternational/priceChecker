@@ -1,0 +1,31 @@
+{
+  "SELECTIONSCREEN": {
+    "title":"Smart Info Kiosk",
+    "config":"ΣΤΟΙΧΕΙΑ ΣΥΝΔΕΣΗΣ",
+    "exit":"EXIT"
+  },
+  "LANDING": {
+    "title": "ΣΥΝΔΕΣΗ",
+    "serverIp": "Server ip",
+    "port": "Port",
+    "storecode": "Κωδικός Καταστήματος",
+    "username": "Όνομα Χρήστη",
+    "password": "Κωδικός Χρήστη",
+    "submit": "ΥΠΟΒΟΛΗ",
+    "orQR": "ή συνδεθείτε με QR",
+    "checkConnection": "Έλεγχος Σύνδεσης"
+  },
+  "HOME": {
+    "title": "Περάστε από το scanner το προϊόν για το οποίο θέλετε πληροφορίες ή τη κάρτα πιστότητάς σας (Loyalty)"
+  },
+  "INFO": {
+    "fpa": "ΦΠΑ ",
+    "price_from": "Τιμή Από: ",
+    "price_diff": "Όφελος: ",
+    "price": "Τιμή: ",
+    "card": "Κάρτα: ",
+    "points": "Πόντοι: ",
+    "from": " Από: ",
+    "to": "Σε:"
+  }
+}

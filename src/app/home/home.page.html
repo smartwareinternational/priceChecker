@@ -4,19 +4,15 @@
 
     <ion-row class="clientLogo">
 <!--      <img [src]="'http://192.168.1.27/assistant/storeimagechecker.png'"> &lt;!&ndash;HARDCODE&ndash;&gt;-->
-      <img [src]="imgIp + '/assistant/storeimagechecker.png'">
+      <img [src]="imgIp + imgName">
     </ion-row>
 
     <ion-row justify-content-center class="mainText">
-      <p text-center>Περάστε από το scanner το προϊόν για το οποίο θέλετε πληροφορίες ή τη κάρτα πιστότητά σας (Loyalty)</p>
+      <p text-center>{{'HOME.title' | translate}}</p>
     </ion-row>
 
     <ion-row justify-content-center class="showcase">
-      <img class="screen" src="assets/img/NQuire_1000_Manta_new_1-283x300.png">
-    </ion-row>
-
-    <ion-row justify-content-center class="showcase">
-      <img class="wifi" src="assets/img/red wifi.jpg" style="transform: rotate(180deg)">
+      <img class="screen" src="assets/img/Newland_Scan.png">
     </ion-row>
 
   </ion-grid>
@@ -26,10 +22,10 @@
 <footer>
 
   <ion-grid>
-    <ion-row justify-content-end class="companyLogo">
+    <ion-row justify-content-end align-items-end class="companyLogo">
 
       <ion-col text-center align-items-start size="4">
-        BARCODE
+        <img class="barcode" src="assets/img/bc.png">
       </ion-col>
 
       <ion-col text-end align-items-end size="4">

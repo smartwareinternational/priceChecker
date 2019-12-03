@@ -15,21 +15,9 @@ export class InfoComponent implements OnInit {
     console.log(this.handler.currentItem);
 
     this.getIp();
-    this.closeOnTimer();
   }
 
   ngOnInit() {
-  }
-
-  closeOnTimer(){
-    setTimeout( () => {
-      if (!this.handler.timeoutReset){
-        this.modCtrl.dismiss();
-      }else{
-        this.handler.timeoutReset = false;
-        this.closeOnTimer();
-      }
-    }, this.handler.timout);
   }
 
   getIp(){

@@ -20,21 +20,21 @@
     </ion-row>
 
     <ion-row class="vatRow" justify-content-center>
-      <p class="bc_vat" text-center>ΦΠΑ {{handler.currentItem.iteminfo.vat_perc}}%</p>
+      <p class="bc_vat" text-center>{{'INFO.fpa' | translate}}{{handler.currentItem.iteminfo.vat_perc}}%</p>
     </ion-row>
 
     <ion-row align-items-center>
 
       <ion-col text-start size="4">
-        <p class="prices" *ngIf="handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">Τιμή Από: {{handler.currentItem.iteminfo.price}}€</p>
+        <p class="prices" *ngIf="handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">{{'INFO.price_from' | translate}}{{handler.currentItem.iteminfo.price}}€</p>
       </ion-col>
 
       <ion-col text-start size="4">
-        <p class="prices" *ngIf="handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">Όφελος: {{(handler.currentItem.iteminfo.price*100 - handler.currentItem.iteminfo.final_price*100)/100}}€</p>
+        <p class="prices" *ngIf="handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">{{'INFO.price_diff' | translate}}{{(handler.currentItem.iteminfo.price*100 - handler.currentItem.iteminfo.final_price*100)/100}}€</p>
       </ion-col>
 
       <ion-col class="finalPriceCol" text-end size="1">
-        <p class="prices">Τιμή:</p>
+        <p class="prices">{{'INFO.price' | translate}}</p>
       </ion-col>
 
       <ion-col class="finalPriceCol" text-start size="3">
@@ -53,11 +53,11 @@
     </ion-row>
 
     <ion-row justify-content-center>
-      <p class="card" text-center>Κάρτα: {{handler.currentItem.loyaltycard.barcode}}</p>
+      <p class="card" text-center>{{'INFO.card' | translate}}{{handler.currentItem.loyaltycard.barcode}}</p>
     </ion-row>
 
     <ion-row justify-content-center>
-      <p class="points" text-center>Πόντοι: {{handler.currentItem.loyaltycard.cum_pts}}</p>
+      <p class="points" text-center>{{'INFO.points' | translate}}{{handler.currentItem.loyaltycard.cum_pts}}</p>
     </ion-row>
 
   </ion-grid>
@@ -75,13 +75,13 @@
           {{handler.currentItem.iteminfo.mma_descr}} {{handler.currentItem.iteminfo.mma_to}}€
         </p>
         <p *ngIf="handler.currentItem.iteminfo.mma_descr != '' && handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">
-          {{handler.currentItem.iteminfo.mma_descr}} Από: {{handler.currentItem.iteminfo.mma_from}}€
+          {{handler.currentItem.iteminfo.mma_descr}}{{'INFO.from' | translate}}{{handler.currentItem.iteminfo.mma_from}}€
         </p>
       </ion-col>
 
       <ion-col class="mmaInfo" text-start align-items-start size="4">
         <p *ngIf="handler.currentItem.iteminfo.mma_descr != '' && handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">
-          Σε: {{handler.currentItem.iteminfo.mma_to}}€
+          {{'INFO.to' | translate}}{{handler.currentItem.iteminfo.mma_to}}€
         </p>
       </ion-col>
 

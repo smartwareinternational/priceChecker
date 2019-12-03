@@ -42,19 +42,23 @@ ion-content{
 
         .submitBtn{
           margin: 15px auto auto auto;
+
           ion-button{
-            --color: #37AB2A;
-            --color-activated: #37AB2A;
-            --color-hover: #37AB2A;
-            --color-focused: #37AB2A;
+            width: 170px;
+            height: 60px;
+
+            --color: black;
+            --color-activated: black;
+            --color-hover: black;
+            --color-focused: black;
 
             --background: white;
-            --background-activated: black;
+            --background-activated: white;
             --background-hover: white;
             --background-focused: white;
 
             border-radius: 5px;
-            border: 1px solid black;
+            border: 1px solid #2E89B0;
             box-shadow: none;
           }
         }

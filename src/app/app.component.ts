@@ -9,6 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
+
+
 export class AppComponent {
 
   constructor(
@@ -17,12 +19,19 @@ export class AppComponent {
     private statusBar: StatusBar
   ) {
     this.initializeApp();
+    this.eventListener();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+    });
+  }
+
+  eventListener(){
+    document.addEventListener("backButton", () => {
+      console.log("listener for back button");
     });
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalController} from '@ionic/angular';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 @Component({
   selector: 'app-scan-qr',
@@ -9,8 +10,14 @@ import {ModalController} from '@ionic/angular';
 export class ScanQRComponent implements OnInit {
 
   QRcode: string;
+  focus = true;
 
-  constructor(public modCtrl: ModalController) { }
+  constructor(public modCtrl: ModalController, public keyboard: Keyboard) {
+    window.addEventListener('keyboardWillShow', () => {
+      this.keyboard.hide();
+    });
+    this.focus = true;
+  }
 
   ngOnInit() {}
 
@@ -34,6 +41,12 @@ export class ScanQRComponent implements OnInit {
     console.log(finalData);
 
     this.modCtrl.dismiss(finalData);
+  }
+
+  ckeckQR(){
+    if (this.QRcode[this.QRcode.length - 1] == '}'){
+      this.getQR();
+    }
   }
 
 }

@@ -1,0 +1,31 @@
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row justify-content-center align-items-center>
+      <img class="smartwareInternational" src="assets/img/logo-smartware-international.png">
+    </ion-row>
+
+    <ion-row justify-content-center align-items-center>
+      <p text-center>{{'SELECTIONSCREEN.title' | translate}}</p>
+    </ion-row>
+
+    <ion-row justify-content-center align-items-center>
+      <img class="platforms" src="assets/img/all platforms.JPG">
+    </ion-row>
+
+    <ion-row justify-content-center align-items-center>
+
+      <ion-col text-start>
+        <ion-button (click)="goLanding()">{{'SELECTIONSCREEN.config' | translate}}</ion-button>
+      </ion-col>
+
+      <ion-col text-end>
+        <ion-button (click)="exit()">{{'SELECTIONSCREEN.exit' | translate}}</ion-button>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
