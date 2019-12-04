@@ -38,11 +38,9 @@ export class HandlerService {
   keystrokes = [];
   currentItem: any;
 
-  timeout: any;
-
   loginFormSetUp: FormGroup;
 
-  constructor(public natStorage: NativeStorage, public httpClient: HttpClient, public device: Device, public alertCtrl: AlertController, public translate: TranslateService, public modCtrl: ModalController) {
+  constructor(public natStorage: NativeStorage, public httpClient: HttpClient, public device: Device, public alertCtrl: AlertController, public translate: TranslateService) {
     this.translate.setDefaultLang('el');
     console.log("Language is " + this.translate.currentLang);
   }
@@ -292,17 +290,6 @@ export class HandlerService {
     setTimeout( () => this.alertCtrl.dismiss(), 3000);
 
     return await alert.present();
-  }
-
-  clearTime(){
-    this.timeout.clearTimeout();
-    this.closeOnTimer();
-  }
-
-  closeOnTimer(){
-    this.timeout = setTimeout( () => {
-      this.modCtrl.dismiss();
-    }, 10000);
   }
 
 

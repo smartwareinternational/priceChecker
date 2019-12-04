@@ -14,11 +14,13 @@ export class HomePage {
   imgIp: string;
   imgName: string;
   isModalOpen = false;
+  numberOfScans: number;
 
   constructor(public modCtrl: ModalController,public handler: HandlerService) {
 
     this.imgName = '';
     this.imgName = "/assistant/storeimagechecker.png";
+    this.numberOfScans = 0;
 
     this.getIp();
   }
@@ -26,7 +28,6 @@ export class HomePage {
   handleKeyboardEvent(event){
 
     let temp = this.handler.getKeystrokes(event);
-
     if (temp == 1){
       this.handler.scan()
         .then( resolve => {
@@ -36,18 +37,31 @@ export class HomePage {
               (this.handler.currentItem.loyaltycard.length != 0 && this.handler.currentItem.loyaltycard.name == '')
             ){ this.handler.noDataAlert();
             }else{
+              this.numberOfScans++;
               if (!this.isModalOpen){
                 this.isModalOpen = true;
-                this.handler.closeOnTimer();
+                this.timout();
                 this.showInfo();
               }else{
-                this.handler.clearTime();
+                this.timout();
               }
             }
           }
         });
     }
   }
+
+  timout() {
+    setTimeout( () => {
+      this.numberOfScans--;
+      if (this.numberOfScans == 0){
+        this.modCtrl.dismiss();
+      }
+      console.log("hi mr timeout");
+      console.log(this.numberOfScans);
+    }, 10000);
+  }
+
 
   getIp(){
     let temp = this.handler.serverLink.split(':');

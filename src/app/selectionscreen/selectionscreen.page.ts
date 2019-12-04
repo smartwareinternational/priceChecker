@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HandlerService} from '../services/handler.service';
-import {NavController} from '@ionic/angular';
+import {NavController, Platform} from '@ionic/angular';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 
 declare let KioskPlugin: any;
 
@@ -16,7 +17,11 @@ export class SelectionscreenPage implements OnInit {
 
   didSelect = false;
 
-  constructor(public formBuild: FormBuilder, public navCtrl: NavController, public handler: HandlerService) {
+  constructor(private platform: Platform, private splashScreen: SplashScreen, public formBuild: FormBuilder, public navCtrl: NavController, public handler: HandlerService) {
+
+    this.platform.ready().then(() => {
+      this.splashScreen.hide();
+    });
 
     this.loginForm = this.formBuild.group({
       ip: ['', Validators.required],

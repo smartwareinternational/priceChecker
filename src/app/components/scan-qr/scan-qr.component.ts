@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalController} from '@ionic/angular';
-import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 @Component({
   selector: 'app-scan-qr',
@@ -12,10 +11,7 @@ export class ScanQRComponent implements OnInit {
   QRcode: string;
   focus = true;
 
-  constructor(public modCtrl: ModalController, public keyboard: Keyboard) {
-    window.addEventListener('keyboardWillShow', () => {
-      this.keyboard.hide();
-    });
+  constructor(public modCtrl: ModalController) {
     this.focus = true;
   }
 

@@ -15,7 +15,6 @@ import {StoreSelectionComponent} from './components/store-selection/store-select
 import {Device} from '@ionic-native/device/ngx';
 import {InfoComponent} from './components/info/info.component';
 import {ScanQRComponent} from './components/scan-qr/scan-qr.component';
-import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -41,7 +40,6 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     StatusBar,
     SplashScreen,
     NativeStorage,
-    Keyboard,
     Device,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
