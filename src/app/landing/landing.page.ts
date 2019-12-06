@@ -59,6 +59,13 @@ export class LandingPage {
     }
   }
 
+  resetSelection(){
+    if (this.isSelected){
+      this.selectedStore = undefined;
+      this.isSelected = false;
+    }
+  }
+
   // --------------------------------------------------
 
 
@@ -94,7 +101,20 @@ export class LandingPage {
     storeSelection.onDidDismiss()
       .then( data => {
         if (data.data != undefined){
-          this.loginForm.value.store_id = data.data.store_id;
+          // this.loginForm.value.store_id = data.data.store_id;
+
+          let ip = this.loginForm.value.ip;
+          let port = this.loginForm.value.port;
+          let user_name = this.loginForm.value.user_name;
+          let password = this.loginForm.value.password;
+          this.loginForm = this.formBuild.group({
+            ip: [ip, Validators.required],
+            port: [port, Validators.required],
+            store_id: [data.data.store_id, Validators.required],
+            user_name: [user_name, Validators.required],
+            password: [password, Validators.required]
+          });
+
           this.isSelected = true;
           this.selectedStore = data.data;
           console.log(this.loginForm.value);

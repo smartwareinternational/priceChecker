@@ -23,7 +23,7 @@ const httpOptions = {
 export class HandlerService {
 
   // ============================== URLS ============================== //
-  url_liststores = "/api/v1/liststores/index";
+  url_liststores = "/api/v1/liststores/active";
   url_liststores_hello = "/api/v1/liststores/hello";
   url_posvalidate = "/api/v1/users/validate";
   url_poslogin = "/api/v1/pos/login";

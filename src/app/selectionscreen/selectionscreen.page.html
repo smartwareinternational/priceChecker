@@ -20,6 +20,11 @@
         <ion-button (click)="goLanding()">{{'SELECTIONSCREEN.config' | translate}}</ion-button>
       </ion-col>
 
+      <ion-col text-center>
+        <p text-center class="redText" *ngIf="error">Πρόβλημα σύνδεσης, ξαναπροσπαθήστε...</p>
+        <ion-button (click)="submit()" *ngIf="error">ΣΥΝΔΕΣΗ</ion-button>
+      </ion-col>
+
       <ion-col text-end>
         <ion-button (click)="exit()">{{'SELECTIONSCREEN.exit' | translate}}</ion-button>
       </ion-col>

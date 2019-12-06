@@ -16,6 +16,7 @@ export class SelectionscreenPage implements OnInit {
   loginForm: FormGroup;
 
   didSelect = false;
+  error = false;
 
   constructor(private platform: Platform, private splashScreen: SplashScreen, public formBuild: FormBuilder, public navCtrl: NavController, public handler: HandlerService) {
 
@@ -87,8 +88,9 @@ export class SelectionscreenPage implements OnInit {
   // SUBMIT FORM --------------------------------------------------
 
   submit(){
+
     let body = {
-      "store_id": this.loginForm.value.store_id,
+      "store_id":  this.loginForm.value.store_id,
       "user_name": this.loginForm.value.user_name,
       "pwd": this.loginForm.value.password
     };
@@ -100,6 +102,8 @@ export class SelectionscreenPage implements OnInit {
         if (resolve){
           this.handler.saveCredentials(this.loginForm.value);
           this.grabLogin(body);
+        }else{
+          this.error = true;
         }
       });
   }
@@ -113,6 +117,8 @@ export class SelectionscreenPage implements OnInit {
       .then( resolve => {
         if (resolve){
           this.navCtrl.navigateForward('home');
+        }else{
+          this.error = true;
         }
       });
   }

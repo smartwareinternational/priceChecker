@@ -28,12 +28,11 @@
         </ion-row>
         <ion-row justify-content-center class="input">
           <ion-col class="left">
-            <ion-input class="inputField" clearInput type="number" formControlName="store_id"></ion-input>
+            <ion-input class="inputField" clearInput type="number" formControlName="store_id" (ionChange)="resetSelection()"></ion-input>
           </ion-col>
           <ion-col class="right">
             <ion-input class="inputField" (click)="getStores()">
               <ion-select interface="popover" formControlName="store_id" placeholder="Καταστήματα" disabled="true" *ngIf="!isSelected"></ion-select>
-              <ion-select interface="popover" formControlName="store_id" placeholder="{{selectedStore.store_id}}" disabled="true" *ngIf="isSelected"></ion-select>
             </ion-input>
           </ion-col>
         </ion-row>
