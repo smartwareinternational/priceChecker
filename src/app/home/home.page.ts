@@ -11,7 +11,6 @@ import {InfoComponent} from '../components/info/info.component';
 })
 export class HomePage {
 
-  imgIp: string;
   imgName: string;
   isModalOpen = false;
   numberOfScans: number;
@@ -19,10 +18,8 @@ export class HomePage {
   constructor(public modCtrl: ModalController,public handler: HandlerService) {
 
     this.imgName = '';
-    this.imgName = "/assistant/storeimagechecker.png";
+    this.imgName = "/api/conf/storeimagechecker.png";
     this.numberOfScans = 0;
-
-    this.getIp();
   }
 
   handleKeyboardEvent(event){
@@ -60,12 +57,6 @@ export class HomePage {
       console.log("hi mr timeout");
       console.log(this.numberOfScans);
     }, 10000);
-  }
-
-
-  getIp(){
-    let temp = this.handler.serverLink.split(':');
-    this.imgIp = temp[0] + ":" + temp[1];
   }
 
   async showInfo(){

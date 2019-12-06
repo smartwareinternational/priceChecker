@@ -38,6 +38,28 @@ ion-content{
           width: 50%;
           margin: auto;
           padding: 0;
+
+          ion-col{
+            padding: 0;
+          }
+          .left{
+            margin-right: 4px;
+          }
+          .right{
+            margin-left: 4px;
+          }
+
+          .select-disabled, .item-select-disabled ion-label{
+            opacity: 100%;
+          }
+
+          ion-select{
+            width: 100%;
+            padding: 0 0 0 10px;
+            margin: 0;
+
+            max-width: 100%;
+          }
         }
 
         .submitBtn{

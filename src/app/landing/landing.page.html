@@ -27,8 +27,15 @@
           <ion-label>{{'LANDING.storecode' | translate}}</ion-label>
         </ion-row>
         <ion-row justify-content-center class="input">
-          <ion-input class="inputField" *ngIf="!isSelected" clearInput type="number" formControlName="store_id" (ionFocus)="getStores()"></ion-input>
-          <ion-input class="inputField" *ngIf="isSelected" (click)="getStores()">{{selectedStore.name}}</ion-input>
+          <ion-col class="left">
+            <ion-input class="inputField" clearInput type="number" formControlName="store_id"></ion-input>
+          </ion-col>
+          <ion-col class="right">
+            <ion-input class="inputField" (click)="getStores()">
+              <ion-select interface="popover" formControlName="store_id" placeholder="Καταστήματα" disabled="true" *ngIf="!isSelected"></ion-select>
+              <ion-select interface="popover" formControlName="store_id" placeholder="{{selectedStore.store_id}}" disabled="true" *ngIf="isSelected"></ion-select>
+            </ion-input>
+          </ion-col>
         </ion-row>
 
         <ion-row justify-content-center class="label">
