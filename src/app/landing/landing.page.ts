@@ -68,8 +68,10 @@ export class LandingPage {
 
     if (this.loginForm.value.ip != '' && this.loginForm.value.port != ''){
       this.handler.serverLink = "http://" + this.loginForm.value.ip + ":" + this.loginForm.value.port;
+      this.handler.loading();
       this.handler.getListStores()
         .then( resolve => {
+          this.handler.loadCtrl.dismiss();
           if (resolve != null){
             this.presentStoreList(resolve);
           }
@@ -107,8 +109,10 @@ export class LandingPage {
   // TEST CONNECTION --------------------------------------------------
 
   checkConnection(){
+    this.handler.loading();
     this.handler.isConnected()
       .then( resolve => {
+        this.handler.loadCtrl.dismiss();
         if (resolve){
           console.log("Server is online");
           this.handler.connectionAlert(0);
@@ -140,11 +144,14 @@ export class LandingPage {
 
     console.log(body);
 
+    this.handler.loading();
     this.handler.validate(body)
       .then( resolve => {
         if (resolve){
           this.handler.saveCredentials(this.loginForm.value);
           this.grabLogin(body);
+        }else{
+          this.handler.loadCtrl.dismiss();
         }
       });
   }
@@ -156,6 +163,7 @@ export class LandingPage {
   grabLogin(body){
     this.handler.login(body)
       .then( resolve => {
+        this.handler.loadCtrl.dismiss();
         if (resolve){
           this.navCtrl.navigateForward('home');
         }

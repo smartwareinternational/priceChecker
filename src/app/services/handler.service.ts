@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {NativeStorage} from '@ionic-native/native-storage/ngx';
 import {HttpClient} from '@angular/common/http';
 import { Device } from '@ionic-native/device/ngx';
-import {AlertController} from '@ionic/angular';
+import {AlertController, LoadingController} from '@ionic/angular';
 import {FormGroup} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 
@@ -41,7 +41,7 @@ export class HandlerService {
 
   loginFormSetUp: FormGroup;
 
-  constructor(public natStorage: NativeStorage, public httpClient: HttpClient, public device: Device, public alertCtrl: AlertController, public translate: TranslateService) {
+  constructor(public natStorage: NativeStorage, public httpClient: HttpClient, public device: Device, public alertCtrl: AlertController, public translate: TranslateService, public loadCtrl: LoadingController) {
     this.translate.setDefaultLang('el');
     console.log("Language is " + this.translate.currentLang);
   }
@@ -291,6 +291,13 @@ export class HandlerService {
     setTimeout( () => this.alertCtrl.dismiss(), 3000);
 
     return await alert.present();
+  }
+
+  async loading(){
+    const loading = await this.loadCtrl.create({
+      message: "Παρακαλώ περιμένετε..."
+    });
+    return await loading.present();
   }
 
 
