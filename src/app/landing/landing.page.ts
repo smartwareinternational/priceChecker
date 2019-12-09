@@ -75,10 +75,10 @@ export class LandingPage {
 
     if (this.loginForm.value.ip != '' && this.loginForm.value.port != ''){
       this.handler.serverLink = "http://" + this.loginForm.value.ip + ":" + this.loginForm.value.port;
-      this.handler.loading();
+      // this.handler.loading();
       this.handler.getListStores()
         .then( resolve => {
-          this.handler.loadCtrl.dismiss();
+          // this.handler.loadCtrl.dismiss();
           if (resolve != null){
             this.presentStoreList(resolve);
           }
