@@ -129,10 +129,10 @@ export class LandingPage {
   // TEST CONNECTION --------------------------------------------------
 
   checkConnection(){
-    this.handler.loading();
+    // this.handler.loading();
     this.handler.isConnected()
       .then( resolve => {
-        this.handler.loadCtrl.dismiss();
+        // this.handler.loadCtrl.dismiss();
         if (resolve){
           console.log("Server is online");
           this.handler.connectionAlert(0);
@@ -159,7 +159,8 @@ export class LandingPage {
     let body = {
       "store_id": store_id,
       "user_name": this.loginForm.value.user_name,
-      "pwd": this.loginForm.value.password
+      "pwd": this.loginForm.value.password,
+      "noNewToken": 1
     };
 
     console.log(body);
