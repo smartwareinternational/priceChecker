@@ -1,6 +1,8 @@
 {
   "SELECTIONSCREEN": {
     "title":"Smart Info Kiosk",
+    "error": "Πρόβλημα σύνδεσης, ξαναπροσπαθήστε...",
+    "connect": "ΣΥΝΔΕΣΗ",
     "config":"ΣΤΟΙΧΕΙΑ ΣΥΝΔΕΣΗΣ",
     "exit":"EXIT"
   },

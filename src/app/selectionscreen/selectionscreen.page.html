@@ -12,6 +12,12 @@
 
     <ion-row justify-content-center align-items-center>
       <img class="platforms" src="assets/img/all platforms.JPG">
+      <ion-row class="versionRow" justify-content-center>
+        <ion-text>
+          <p class="version" text-center no-margin>v1.0</p>
+          <p class="vDate" text-center no-margin>12/12/2019</p>
+        </ion-text>
+      </ion-row>
     </ion-row>
 
     <ion-row justify-content-center align-items-center>
@@ -21,8 +27,8 @@
       </ion-col>
 
       <ion-col text-center>
-        <p text-center class="redText" *ngIf="error">Πρόβλημα σύνδεσης, ξαναπροσπαθήστε...</p>
-        <ion-button (click)="submit()" *ngIf="error">ΣΥΝΔΕΣΗ</ion-button>
+        <p text-center class="redText" *ngIf="error">{{'SELECTIONSCREEN.error' | translate}}</p>
+        <ion-button (click)="submit()" *ngIf="error">{{'SELECTIONSCREEN.connect' | translate}}ΣΥΝΔΕΣΗ</ion-button>
       </ion-col>
 
       <ion-col text-end>

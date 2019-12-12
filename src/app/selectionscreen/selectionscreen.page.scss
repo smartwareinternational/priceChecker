@@ -20,6 +20,22 @@ ion-grid{
     .platforms{
       width: 25%;
       height: 60%;
+      margin-bottom: 40px;
+    }
+
+    .versionRow{
+      width: 100%;
+      height: 100%;
+
+      .version{
+        font-size: 15px;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .vDate{
+        font-size: 13px;
+      }
     }
 
     .redText{
