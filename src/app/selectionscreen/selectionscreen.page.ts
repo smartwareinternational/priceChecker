@@ -4,8 +4,6 @@ import {HandlerService} from '../services/handler.service';
 import {NavController, Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 
-declare let KioskPlugin: any;
-
 @Component({
   selector: 'app-selectionscreen',
   templateUrl: './selectionscreen.page.html',
@@ -134,7 +132,7 @@ export class SelectionscreenPage implements OnInit {
 
   exit(){
     this.didSelect = true;
-    KioskPlugin.exitKiosk();
+    navigator["app"].exitApp();
   }
 
 }

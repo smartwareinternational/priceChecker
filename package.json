@@ -28,7 +28,6 @@
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "cordova-android": "8.1.0",
-    "cordova-plugin-kiosk": "git+https://github.com/hkalina/cordova-plugin-kiosk.git",
     "cordova-plugin-nativestorage": "^2.3.2",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.1",
@@ -77,8 +76,7 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
-      },
-      "cordova-plugin-kiosk": {}
+      }
     },
     "platforms": [
       "android"
