@@ -22,6 +22,8 @@ const httpOptions = {
 })
 export class HandlerService {
 
+  version = "1.1";
+
   // ============================== URLS ============================== //
   url_liststores = "/api/v1/liststores/active";
   url_liststores_hello = "/api/v1/liststores/hello";

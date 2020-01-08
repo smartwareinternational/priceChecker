@@ -63,10 +63,15 @@
 </ion-content>
 
 <footer>
-  <ion-row>
+  <ion-row align-items-center>
     <ion-col text-start>
       <p (click)="goScanQR()">{{'LANDING.orQR' | translate}}</p>
     </ion-col>
+
+    <ion-col text-center>
+      <p class="version" text-center no-margin>v{{handler.version}}</p>
+    </ion-col>
+
     <ion-col>
       <p text-end (click)="checkConnection()" *ngIf="handler.serverLink != undefined">{{'LANDING.checkConnection' | translate}}</p>
     </ion-col>

@@ -148,6 +148,8 @@ export class LandingPage {
   // SUBMIT FORM --------------------------------------------------
 
   submit(){
+    this.handler.saveCredentials(this.loginForm.value);
+
     let store_id = '';
     if (this.isSelected){
       store_id = this.selectedStore.store_id;
@@ -169,7 +171,6 @@ export class LandingPage {
     this.handler.validate(body)
       .then( resolve => {
         if (resolve){
-          this.handler.saveCredentials(this.loginForm.value);
           this.grabLogin(body);
         }else{
           this.handler.loadCtrl.dismiss();

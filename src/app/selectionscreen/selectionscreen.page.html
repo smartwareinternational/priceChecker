@@ -14,7 +14,7 @@
       <img class="platforms" src="assets/img/all platforms.JPG">
       <ion-row class="versionRow" justify-content-center>
         <ion-text>
-          <p class="version" text-center no-margin>v1.01</p>
+          <p class="version" text-center no-margin>v{{handler.version}}</p>
           <p class="vDate" text-center no-margin>12/12/2019</p>
         </ion-text>
       </ion-row>
@@ -28,7 +28,7 @@
 
       <ion-col text-center>
         <p text-center class="redText" *ngIf="error">{{'SELECTIONSCREEN.error' | translate}}</p>
-        <ion-button (click)="submit()" *ngIf="error">{{'SELECTIONSCREEN.connect' | translate}}ΣΥΝΔΕΣΗ</ion-button>
+        <ion-button (click)="submit()" *ngIf="error">{{'SELECTIONSCREEN.connect' | translate}}</ion-button>
       </ion-col>
 
       <ion-col text-end>
