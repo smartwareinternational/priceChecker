@@ -22,7 +22,7 @@ const httpOptions = {
 })
 export class HandlerService {
 
-  version = "1.1";
+  version = "1.1.0";
   vDate = "08/01/2020";
 
   // ============================== URLS ============================== //
