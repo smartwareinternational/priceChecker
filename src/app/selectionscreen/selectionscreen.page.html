@@ -2,36 +2,36 @@
 
   <ion-grid>
 
-    <ion-row justify-content-center align-items-center>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
       <img class="smartwareInternational" src="assets/img/logo-smartware-international.png">
     </ion-row>
 
-    <ion-row justify-content-center align-items-center>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
       <p text-center>{{'SELECTIONSCREEN.title' | translate}}</p>
     </ion-row>
 
-    <ion-row justify-content-center align-items-center>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
       <img class="platforms" src="assets/img/all platforms.JPG">
-      <ion-row class="versionRow" justify-content-center>
+      <ion-row class="versionRow ion-justify-content-center" >
         <ion-text>
-          <p class="version" text-center no-margin>v{{handler.version}}</p>
-          <p class="vDate" text-center no-margin>{{handler.vDate}}</p>
+          <p class="version ion-text-center ion-no-margin">v{{handler.version}}</p>
+          <p class="vDate ion-text-center ion-no-margin">{{handler.vDate}}</p>
         </ion-text>
       </ion-row>
     </ion-row>
 
-    <ion-row justify-content-center align-items-center>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
 
-      <ion-col text-start>
+      <ion-col class="ion-text-start">
         <ion-button (click)="goLanding()">{{'SELECTIONSCREEN.config' | translate}}</ion-button>
       </ion-col>
 
-      <ion-col text-center>
-        <p text-center class="redText" *ngIf="error">{{'SELECTIONSCREEN.error' | translate}}</p>
+      <ion-col class="ion-text-center">
+        <p  class="redText ion-text-center" *ngIf="error">{{'SELECTIONSCREEN.error' | translate}}</p>
         <ion-button (click)="submit()" *ngIf="error">{{'SELECTIONSCREEN.connect' | translate}}</ion-button>
       </ion-col>
 
-      <ion-col text-end>
+      <ion-col class="ion-text-end">
         <ion-button (click)="exit()">{{'SELECTIONSCREEN.exit' | translate}}</ion-button>
       </ion-col>
 

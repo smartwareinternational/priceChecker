@@ -167,14 +167,14 @@ export class LandingPage {
 
     console.log(body);
 
-    this.handler.loading();
-    this.handler.validate(body)
-      .then( resolve => {
-        if (resolve){
-          this.grabLogin(body);
-        }else{
-          this.handler.loadCtrl.dismiss();
-        }
+    this.handler.loading()
+      .then( () => {
+        this.handler.validate(body)
+          .then( resolve => {
+            if (resolve){
+              this.grabLogin(body);
+            }
+          });
       });
   }
   // --------------------------------------------------

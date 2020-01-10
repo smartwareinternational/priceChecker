@@ -11,33 +11,33 @@
 <!--  ITEMINFO GRID-->
   <ion-grid class="iteminfo" *ngIf="handler.currentItem.iteminfo.length != 0">
 
-    <ion-row justify-content-center>
-      <p class="descr" text-center>{{handler.currentItem.iteminfo.descr}}</p>
+    <ion-row class="ion-justify-content-center">
+      <p class="descr ion-text-center">{{handler.currentItem.iteminfo.descr}}</p>
     </ion-row>
 
-    <ion-row justify-content-center>
-      <p class="bc_vat" text-center>({{handler.currentItem.iteminfo.barcode}} / {{handler.currentItem.iteminfo.tax_id}})</p>
+    <ion-row class="ion-justify-content-center">
+      <p class="bc_vat ion-text-center">({{handler.currentItem.iteminfo.barcode}} / {{handler.currentItem.iteminfo.tax_id}})</p>
     </ion-row>
 
-    <ion-row class="vatRow" justify-content-center>
-      <p class="bc_vat" text-center>{{'INFO.fpa' | translate}}{{handler.currentItem.iteminfo.vat_perc}}%</p>
+    <ion-row class="vatRow ion-justify-content-center">
+      <p class="bc_vat ion-text-center">{{'INFO.fpa' | translate}}{{handler.currentItem.iteminfo.vat_perc}}%</p>
     </ion-row>
 
-    <ion-row align-items-center>
+    <ion-row class="ion-align-items-center">
 
-      <ion-col text-start size="4">
+      <ion-col class="ion-text-start" size="4">
         <p class="prices" *ngIf="handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">{{'INFO.price_from' | translate}}{{handler.currentItem.iteminfo.price}}€</p>
       </ion-col>
 
-      <ion-col text-start size="4">
+      <ion-col class="ion-text-start" size="4">
         <p class="prices" *ngIf="handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">{{'INFO.price_diff' | translate}}{{(handler.currentItem.iteminfo.price*100 - handler.currentItem.iteminfo.final_price*100)/100}}€</p>
       </ion-col>
 
-      <ion-col class="finalPriceCol" text-end size="1">
+      <ion-col class="finalPriceCol ion-text-end" size="1">
         <p class="prices">{{'INFO.price' | translate}}</p>
       </ion-col>
 
-      <ion-col class="finalPriceCol" text-start size="3">
+      <ion-col class="finalPriceCol ion-text-start" size="3">
         <p class="finalPrice">{{handler.currentItem.iteminfo.final_price}}€</p>
       </ion-col>
 
@@ -48,16 +48,16 @@
 <!--  LOYALTY CARD GRID-->
   <ion-grid class="loyaltycard" *ngIf="handler.currentItem.loyaltycard.length != 0">
 
-    <ion-row justify-content-center>
-      <p class="name" text-center>{{handler.currentItem.loyaltycard.name}}</p>
+    <ion-row class="ion-justify-content-center">
+      <p class="name ion-text-center">{{handler.currentItem.loyaltycard.name}}</p>
     </ion-row>
 
-    <ion-row justify-content-center>
-      <p class="card" text-center>{{'INFO.card' | translate}}{{handler.currentItem.loyaltycard.barcode}}</p>
+    <ion-row class="ion-justify-content-center">
+      <p class="card ion-text-center">{{'INFO.card' | translate}}{{handler.currentItem.loyaltycard.barcode}}</p>
     </ion-row>
 
-    <ion-row justify-content-center>
-      <p class="points" text-center>{{'INFO.points' | translate}}{{handler.currentItem.loyaltycard.cum_pts}}</p>
+    <ion-row class="ion-justify-content-center">
+      <p class="points ion-text-center">{{'INFO.points' | translate}}{{handler.currentItem.loyaltycard.cum_pts}}</p>
     </ion-row>
 
   </ion-grid>
@@ -68,9 +68,9 @@
 
 <!--  ITEM INFO FOOTER-->
   <ion-grid class="iteminfoFooter" *ngIf="handler.currentItem.iteminfo.length != 0">
-    <ion-row justify-content-end class="companyLogo">
+    <ion-row class="companyLogo ion-justify-content-end">
 
-      <ion-col class="mmaInfo" text-start align-items-start size="4">
+      <ion-col class="mmaInfo ion-text-start ion-align-items-start" size="4">
         <p *ngIf="handler.currentItem.iteminfo.mma_descr != '' && handler.currentItem.iteminfo.final_price == handler.currentItem.iteminfo.price">
           {{handler.currentItem.iteminfo.mma_descr}} {{handler.currentItem.iteminfo.mma_to}}€
         </p>
@@ -79,13 +79,13 @@
         </p>
       </ion-col>
 
-      <ion-col class="mmaInfo" text-start align-items-start size="4">
+      <ion-col class="mmaInfo ion-text-start ion-align-items-start" size="4">
         <p *ngIf="handler.currentItem.iteminfo.mma_descr != '' && handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">
           {{'INFO.to' | translate}}{{handler.currentItem.iteminfo.mma_to}}€
         </p>
       </ion-col>
 
-      <ion-col text-end align-items-end size="4">
+      <ion-col class="ion-text-end ion-align-items-end" size="4">
         <img src="assets/img/logo-smartware.png">
       </ion-col>
 
@@ -94,9 +94,9 @@
 
 <!--  LOYALTY CARD FOOTER-->
   <ion-grid *ngIf="handler.currentItem.loyaltycard.length != 0">
-    <ion-row justify-content-end class="companyLogo">
+    <ion-row class="companyLogo ion-justify-content-end">
 
-      <ion-col text-end align-items-end size="4">
+      <ion-col class="ion-text-end ion-align-items-end" size="4">
         <img src="assets/img/logo-smartware.png">
       </ion-col>
 

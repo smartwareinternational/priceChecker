@@ -2,31 +2,31 @@
 
   <ion-grid>
 
-    <ion-row justify-content-center class="title">
+    <ion-row class="title ion-justify-content-center">
       <ion-title text-center>{{'LANDING.title' | translate}}</ion-title>
     </ion-row>
 
-    <ion-row justify-content-center class="form">
+    <ion-row class="form ion-justify-content-center">
       <form [formGroup]="loginForm">
 
-        <ion-row justify-content-center class="label">
+        <ion-row class="label ion-justify-content-center">
           <ion-label>{{'LANDING.serverIp' | translate}}</ion-label>
         </ion-row>
-        <ion-row justify-content-center class="input">
+        <ion-row class="input ion-justify-content-center">
           <ion-input class="inputField" clearInput type="text" formControlName="ip" (focusout)="fillIp()"></ion-input>
         </ion-row>
 
-        <ion-row justify-content-center class="label">
+        <ion-row class="label ion-justify-content-center">
           <ion-label>{{'LANDING.port' | translate}}</ion-label>
         </ion-row>
-        <ion-row justify-content-center class="input">
+        <ion-row class="input ion-justify-content-center">
           <ion-input class="inputField" clearInput type="number" formControlName="port" (focusout)="fillPort()"></ion-input>
         </ion-row>
 
-        <ion-row justify-content-center class="label">
+        <ion-row class="label ion-justify-content-center">
           <ion-label>{{'LANDING.storecode' | translate}}</ion-label>
         </ion-row>
-        <ion-row justify-content-center class="input">
+        <ion-row class="input ion-justify-content-center">
           <ion-col class="left">
             <ion-input class="inputField" clearInput type="number" formControlName="store_id" (ionChange)="resetSelection()"></ion-input>
           </ion-col>
@@ -37,21 +37,21 @@
           </ion-col>
         </ion-row>
 
-        <ion-row justify-content-center class="label">
+        <ion-row class="label ion-justify-content-center">
           <ion-label>{{'LANDING.username' | translate}}</ion-label>
         </ion-row>
-        <ion-row justify-content-center class="input">
+        <ion-row class="input ion-justify-content-center">
           <ion-input class="inputField" clearInput type="text" formControlName="user_name"></ion-input>
         </ion-row>
 
-        <ion-row justify-content-center class="label">
+        <ion-row class="label ion-justify-content-center">
           <ion-label>{{'LANDING.password' | translate}}</ion-label>
         </ion-row>
-        <ion-row justify-content-center class="input">
+        <ion-row class="input ion-justify-content-center">
           <ion-input class="inputField" clearInput type="password" formControlName="password"></ion-input>
         </ion-row>
 
-        <ion-row justify-content-center class="submitBtn">
+        <ion-row class="submitBtn ion-justify-content-center">
           <ion-button class="genericButton" (click)="submit()">{{'LANDING.submit' | translate}}</ion-button>
         </ion-row>
 
@@ -63,17 +63,17 @@
 </ion-content>
 
 <footer>
-  <ion-row align-items-center>
-    <ion-col text-start>
+  <ion-row class="ion-align-items-center">
+    <ion-col class="ion-text-start">
       <p (click)="goScanQR()">{{'LANDING.orQR' | translate}}</p>
     </ion-col>
 
-    <ion-col text-center>
-      <p class="version" text-center no-margin>v{{handler.version}}</p>
+    <ion-col class="ion-text-center">
+      <p class="version ion-text-center ion-no-margin">v{{handler.version}}</p>
     </ion-col>
 
     <ion-col>
-      <p text-end (click)="checkConnection()" *ngIf="handler.serverLink != undefined">{{'LANDING.checkConnection' | translate}}</p>
+      <p class="ion-text-end" (click)="checkConnection()" *ngIf="handler.serverLink != undefined">{{'LANDING.checkConnection' | translate}}</p>
     </ion-col>
   </ion-row>
 </footer>

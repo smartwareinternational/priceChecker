@@ -22,7 +22,7 @@ const httpOptions = {
 })
 export class HandlerService {
 
-  version = "1.1.1";
+  version = "1.1.2";
   vDate = "09/01/2020";
 
   // ============================== URLS ============================== //
@@ -148,9 +148,12 @@ export class HandlerService {
         resolve(true);
 
       }, error => {
-        console.log(error);
-        this.errorAlert();
-        resolve(false);
+        this.loadCtrl.dismiss()
+          .then( () => {
+            console.log(error);
+            this.errorAlert();
+            resolve(false);
+          });
       });
 
     });

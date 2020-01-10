@@ -1,9 +1,9 @@
-<ion-list align-items-center>
+<ion-list class="ion-align-items-center">
 
-  <ion-row justify-content-center align-items-center *ngFor="let store of stores" (click)="selectStore(store)">
+  <ion-row class="ion-justify-content-center ion-align-items-center" *ngFor="let store of stores" (click)="selectStore(store)">
     <ion-text>
-      <p text-center>{{store.name}}</p>
-      <p text-center>{{store.store_id}}</p>
+      <p class="ion-text-center">{{store.name}}</p>
+      <p class="ion-text-center">{{store.store_id}}</p>
     </ion-text>
   </ion-row>
 
