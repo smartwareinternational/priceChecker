@@ -22,8 +22,8 @@ const httpOptions = {
 })
 export class HandlerService {
 
-  version = "1.1.2";
-  vDate = "10/01/2020";
+  version = "1.1.3";
+  vDate = "28/02/2020";
 
   // ============================== URLS ============================== //
   url_liststores = "/api/v1/liststores/active";

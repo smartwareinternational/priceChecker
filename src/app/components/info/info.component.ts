@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {HandlerService} from '../../services/handler.service';
 import {ModalController} from '@ionic/angular';
 
+import {Decimal} from 'decimal.js';
+
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -14,6 +16,10 @@ export class InfoComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getDiff(){
+    return new Decimal(this.handler.currentItem.iteminfo.price).sub(this.handler.currentItem.iteminfo.final_price).toFixed(2);
   }
 
 }

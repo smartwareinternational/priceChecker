@@ -20,7 +20,7 @@
           <ion-label>{{'LANDING.port' | translate}}</ion-label>
         </ion-row>
         <ion-row class="input ion-justify-content-center">
-          <ion-input class="inputField" clearInput type="number" formControlName="port" (focusout)="fillPort()"></ion-input>
+          <ion-input class="inputField" clearInput type="tel" formControlName="port" (focusout)="fillPort()"></ion-input>
         </ion-row>
 
         <ion-row class="label ion-justify-content-center">
@@ -28,7 +28,7 @@
         </ion-row>
         <ion-row class="input ion-justify-content-center">
           <ion-col class="left">
-            <ion-input class="inputField" clearInput type="number" formControlName="store_id" (ionChange)="resetSelection()"></ion-input>
+            <ion-input class="inputField" clearInput type="text" formControlName="store_id" (ionChange)="resetSelection()"></ion-input>
           </ion-col>
           <ion-col class="right">
             <ion-input class="inputField" (click)="getStores()">

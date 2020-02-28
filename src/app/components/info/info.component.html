@@ -30,7 +30,7 @@
       </ion-col>
 
       <ion-col class="ion-text-start" size="4">
-        <p class="prices" *ngIf="handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">{{'INFO.price_diff' | translate}}{{(handler.currentItem.iteminfo.price*100 - handler.currentItem.iteminfo.final_price*100)/100}}€</p>
+        <p class="prices" *ngIf="handler.currentItem.iteminfo.final_price != handler.currentItem.iteminfo.price">{{'INFO.price_diff' | translate}}{{getDiff()}}€</p>
       </ion-col>
 
       <ion-col class="finalPriceCol ion-text-end" size="1">
