@@ -60,6 +60,13 @@ ion-content{
 
             max-width: 100%;
           }
+
+          ion-toggle{
+            --background: #d8f5ff;
+            --background-checked: #2E89B0;
+            --handle-background: #2E89B0;
+            --handle-background-checked: #0a4c69;
+          }
         }
 
         .submitBtn{

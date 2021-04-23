@@ -8,7 +8,8 @@
     </ion-row>
 
     <ion-row class="mainText ion-justify-content-center">
-      <p text-center>{{'HOME.title' | translate}}</p>
+      <p text-center *ngIf="!handler.shortDescr">{{'HOME.title' | translate}}</p>
+      <p text-center *ngIf="handler.shortDescr">{{'HOME.title_noloyalty' | translate}}</p>
     </ion-row>
 
     <ion-row class="showcase ion-justify-content-center">

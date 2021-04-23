@@ -52,7 +52,8 @@ export class SelectionscreenPage implements OnInit {
             port: [temp.port, Validators.required],
             store_id: [temp.store_id, Validators.required],
             user_name: [temp.user_name, Validators.required],
-            password: [temp.password, Validators.required]
+            password: [temp.password, Validators.required],
+            shortDescr: [temp.shortDescr == undefined ? false : temp.shortDescr, Validators.required]
           });
           this.handler.serverLink = "http://" + this.loginForm.value.ip + ":" + this.loginForm.value.port;
 
@@ -98,6 +99,7 @@ export class SelectionscreenPage implements OnInit {
     this.handler.validate(body)
       .then( resolve => {
         if (resolve){
+          this.handler.shortDescr = this.loginForm.value.shortDescr;
           this.handler.saveCredentials(this.loginForm.value);
           this.grabLogin(body);
         }else{

@@ -22,8 +22,8 @@ const httpOptions = {
 })
 export class HandlerService {
 
-  version = "1.1.3";
-  vDate = "28/02/2020";
+  version = "1.1.4";
+  vDate = "23/04/2021";
 
   // ============================== URLS ============================== //
   url_liststores = "/api/v1/liststores/active";
@@ -43,6 +43,7 @@ export class HandlerService {
   currentItem: any;
 
   loginFormSetUp: FormGroup;
+  shortDescr = false;
 
   constructor(public natStorage: NativeStorage, public httpClient: HttpClient, public device: Device, public alertCtrl: AlertController, public translate: TranslateService, public loadCtrl: LoadingController) {
     this.translate.setDefaultLang('el');
@@ -188,6 +189,8 @@ export class HandlerService {
       name: this.validateData.name,
       // fingerprint: this.device.uuid
     };
+
+    console.log(loginBody);
 
     let temp: any;
 

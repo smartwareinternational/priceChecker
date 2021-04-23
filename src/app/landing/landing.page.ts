@@ -25,7 +25,8 @@ export class LandingPage {
       port: ['', Validators.required],
       store_id: ['', Validators.required],
       user_name: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      shortDescr: [false, Validators.required]
     });
 
     this.getSavedCredentials();
@@ -107,12 +108,14 @@ export class LandingPage {
           let port = this.loginForm.value.port;
           let user_name = this.loginForm.value.user_name;
           let password = this.loginForm.value.password;
+          let shortDescr = this.loginForm.value.shortDescr;
           this.loginForm = this.formBuild.group({
             ip: [ip, Validators.required],
             port: [port, Validators.required],
             store_id: [data.data.store_id, Validators.required],
             user_name: [user_name, Validators.required],
-            password: [password, Validators.required]
+            password: [password, Validators.required],
+            shortDescr: [shortDescr, Validators.required]
           });
 
           this.isSelected = true;
@@ -171,6 +174,7 @@ export class LandingPage {
       .then( () => {
         this.handler.validate(body)
           .then( resolve => {
+            this.handler.shortDescr = this.loginForm.value.shortDescr;
             if (resolve){
               this.grabLogin(body);
             }
@@ -213,7 +217,8 @@ export class LandingPage {
             port: [data.data[1], Validators.required],
             store_id: [data.data[2], Validators.required],
             user_name: [data.data[3], Validators.required],
-            password: [data.data[4], Validators.required]
+            password: [data.data[4], Validators.required],
+            shortDescr: [data.data[5], Validators.required]
           });
 
           this.submit();

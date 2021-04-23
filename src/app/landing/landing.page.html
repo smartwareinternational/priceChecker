@@ -51,6 +51,13 @@
           <ion-input class="inputField" clearInput type="password" formControlName="password"></ion-input>
         </ion-row>
 
+        <ion-row class="label ion-justify-content-center">
+          <ion-label>{{'LANDING.shortDescr' | translate}}</ion-label>
+        </ion-row>
+        <ion-row class="input ion-justify-content-center">
+          <ion-toggle formControlName="shortDescr"></ion-toggle>
+        </ion-row>
+
         <ion-row class="submitBtn ion-justify-content-center">
           <ion-button class="genericButton" (click)="submit()">{{'LANDING.submit' | translate}}</ion-button>
         </ion-row>
